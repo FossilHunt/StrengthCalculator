@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Users overview{% endblock %}
+
+{% block body %}
+    <div class="page">
+        <div class="container">
+            <div class="card">
+                <div class="container-xl">
+                    <div class="card-header justify-content-center">
+                        <h1>Calculator output</h1>
+                    </div>
+                <div class="card-body">
+                {# form output #}
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="card">
+        <div class="container container-tight py-4">
+            <div class="card">
+                <div class="text-center mb-4">
+                    <div class="card card-md">
+                        <div class="card-body">
+                        <h2 class="h2 text-center mb-4">StrengthCalculator</h2>
+                            <form id="StrengthForm" onsubmit="">
+                                <div class="mb-3">
+                                    <label class="form-label" for="Option">Choose</label>
+                                    <input type="radio" id="Option" name="Calc" value="BenchPress">BenchPress
+                                    <input type="radio" id="Option" name="Calc" value="Deadlift">Deadlift
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="BodyWeight">BodyWeight</label>
+                                    <input type="text" class="form-control" id="BodyWeight">
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label" for="Weight">Weight</label>
+                                    <div class="input-group input-group-flat"></div>
+                                    <input type="text" class="form-control" id="Weight">
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label" for="Reps">Reps</label>
+                                    <div class="input-group input-group-flat"></div>
+                                    <input type="text" class="form-control" id="Reps">
+                                </div>
+                                <div class="form-footer">
+                                    <button type="submit" class="btn btn-primary w-100">
+                                    Submit
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <br>
+        <div class="container">
+            <div class="card">
+                <div class="container-xl">
+                    <div class="card-header justify-content-center">
+                        <h1>Calculator Description</h1>
+                    </div>
+                <div class="card-body">
+                {# information #}
+                </div>
+            </div>
+        </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        // global weight and reps variables
+        let bodyWeight = document.getElementById("BodyWeight")
+        let weight = document.getElementById("Weight")
+        let reps = document.getElementById("Reps")
+
+        // option to choose between bench press and deadlift
+
+        // function to calculate your bench press
+        function benchPress(BodyWeight, Weight, Reps) {
+
+        }
+        // function to calculate your deadlift
+        function deadlift() {
+
+        }
+        // put the output of your calculations inside a card.
+        // create some sort of logic to decide if you should train more or train harder or train less
+        // can calculate this by looking at how much you can bench/deadlift your bodyweight (1.05x, 1.2x ect.)
+
+        /**
+         * example:
+         *
+         * if bodyweight > 1.05
+         * print you should train more
+         *
+         * if bodyweight < 1.05
+         * print you are prob new to the gym
+         *
+         * if bodyweight > 1.2
+         * print you are really experienced in the gym
+         */
+    </script>
+{% endblock %}
