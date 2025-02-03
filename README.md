@@ -1,6 +1,7 @@
 # StrengthCalculator
 
 This is a personal project that is mostly made to learn more with web development. 
+
 Some information about the website:
 
 -On the home page it shows a calculator on wich you can calculate your one-max-rep.
