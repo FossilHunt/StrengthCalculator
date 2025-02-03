@@ -4,16 +4,16 @@ This is a personal project that is mostly made to learn more with web developmen
 
 Some information about the website:
 
--On the home page it shows a calculator on wich you can calculate your one-max-rep.
+-On the home page it shows a calculator on wich you can calculate your one-rep-max.
 This can be usefull for your gym journey
 
--You can navigate to the ScaleApi page. This page will show the stats of a bluetooth scale.
+-You can navigate to the Scale-Api page. This page will show the stats of a bluetooth scale.
 This scale is connected with an app. This way i can get the data and post it here. 
-On the top it will show additional information about the stats
+On the top of the page it will show additional information once the stats are uploaded.
 
 -On the Leaderboards page it has what you would expect, a leaderboard.
 To get on this leaderboard a user needs to login.
-When you do that and you use the calculator, it will post the output on the leaderboard.
+When you do that and you use the calculator, it will post the output of the calculator on the leaderboard.
 This is so you can "battle" against other users. Your placement on the leaderboards also determents your rank.
 The higher you place, the better rank you get. This is just a testing concept. I did this to see how it would work out.
 
