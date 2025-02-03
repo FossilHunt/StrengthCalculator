@@ -11,7 +11,9 @@
                         <h1>Calculator output</h1>
                     </div>
                 <div class="card-body">
-                {# form output #}
+                <p id="output">Your 1RM is: 0</p>
+                <p id="bodyOutput">You can lift your bodyweight: 0x</p>
+                <p></p>
                 </div>
             </div>
         </div>
@@ -23,25 +25,24 @@
                     <div class="card card-md">
                         <div class="card-body">
                         <h2 class="h2 text-center mb-4">StrengthCalculator</h2>
-                            <form id="StrengthForm" onsubmit="">
+                            <form id="StrengthForm" onsubmit="return Calculate()">
                                 <div class="mb-3">
-                                    <label class="form-label" for="Option"></label>
-                                    <input type="radio" id="Option" name="Calc" value="BenchPress">BenchPress
-                                    <input type="radio" id="Option" name="Calc" value="Deadlift">Deadlift
+                                    <label class="form-label" for="Option">BenchPress or Deadlift</label>
+                                    <input type="text" class="form-control" id="Option" name="Calc">
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="BodyWeight">BodyWeight</label>
-                                    <input type="text" class="form-control" id="BodyWeight">
+                                    <input type="number" class="form-control" id="BodyWeight">
                                 </div>
                                 <div class="mb-2">
                                     <label class="form-label" for="Weight">Weight</label>
                                     <div class="input-group input-group-flat"></div>
-                                    <input type="text" class="form-control" id="Weight">
+                                    <input type="number" class="form-control" id="Weight">
                                 </div>
                                 <div class="mb-2">
                                     <label class="form-label" for="Reps">Reps</label>
                                     <div class="input-group input-group-flat"></div>
-                                    <input type="text" class="form-control" id="Reps">
+                                    <input type="number" class="form-control" id="Reps">
                                 </div>
                                 <div class="form-footer">
                                     <button type="submit" class="btn btn-primary w-100">
@@ -62,44 +63,63 @@
                     <div class="card-header justify-content-center">
                         <h1>Calculator Description</h1>
                     </div>
-                <div class="card-body">
-                {# information #}
+                <div class="card-body text-center">
+                <p>This website helps you estimate your one-rep max (1RM) for bench press and deadlift.</p>
+                <p>It uses a proven formula to calculate the maximum weight you can lift for a single repetition.</p>
+                <p>Simply enter the weight you lifted and the number of reps performed.</p>
+                <p>The calculator will instantly provide an accurate estimate of your 1RM.</p>
+                <p>Use this tool to track your progress and set new strength goals.</p>
+                <p>Whether you're a beginner or an advanced lifter,
+                this calculator is a great way to measure your strength potential.</p>
+                <p>Note: the calculations are not 100% accurate, since it differs per person</p>
                 </div>
             </div>
         </div>
 {% endblock %}
 {% block javascripts %}
-    <script>
-        // global weight and reps variables
-        let bodyWeight = document.getElementById("BodyWeight")
-        let weight = document.getElementById("Weight")
-        let reps = document.getElementById("Reps")
+<script>
+    function Calculate() {
+        let option = document.getElementById("Option").value;
+        let bodyWeight = document.getElementById("BodyWeight").value;
+        let weight =parseFloat(document.getElementById("Weight").value);
+        let reps = parseInt(document.getElementById("Reps").value);
+        let output;
 
-        // option to choose between bench press and deadlift
-
-        // function to calculate your bench press
-        function benchPress(BodyWeight, Weight, Reps) {
-
+        if (option === "BenchPress") {
+            output = weight * reps * 0.0333 + weight;
+        }else if(option === "Deadlift") {
+            output = weight * 1.1307 + 0.6998;
+        } else {
+            console.log("Nothing to calculate");
         }
-        // function to calculate your deadlift
-        function deadlift() {
 
+        document.getElementById("output").innerText = `Your 1RM is: ${output.toFixed(2)}`;
+
+        let calcBodyWeight = output / bodyWeight;
+
+        let liftMore = "You should train more. You can do this by setting goals on what you want to achieve. " +
+         "Do you want to gain muscle, or do you want to gain strength? These things can help you on your journey, " +
+          "Also listen to your body. If you overtrain to much, you will lose motivation really fast. " +
+           "Getting enough rest will also help you see progress much faster."
+        let experienced = "You are really experieced in the gym. Keep going with what you are doing right now" +
+         " You are doing great:)"
+        let NewGym = "You are probably new to the gym. You should train more. Things that can help you with this is" +
+         "to make schedules. How many times a week can you train, What do you want to achieve etc. " +
+          "Do not be afraid to ask people you know or dont know for help. You can approach people in the gym to ask " +
+           "them for help."
+
+        if (calcBodyWeight < 1.00) {
+            document.getElementById("bodyOutput").innerText = `You can lift your bodyweight: ${calcBodyWeight.toFixed(2)}x
+            ${NewGym}`;
+        } else if (calcBodyWeight > 1.20) {
+            document.getElementById("bodyOutput").innerText = `You can lift your bodyweight: ${calcBodyWeight.toFixed(2)}x
+            ${experienced}`;
+        } else if (calcBodyWeight >1.00){
+            document.getElementById("bodyOutput").innerText = `You can lift your bodyweight: ${calcBodyWeight.toFixed(2)}x
+             ${liftMore}`;
         }
-        // put the output of your calculations inside a card.
-        // create some sort of logic to decide if you should train more or train harder or train less
-        // can calculate this by looking at how much you can bench/deadlift your bodyweight (1.05x, 1.2x ect.)
 
-        /**
-         * example:
-         *
-         * if bodyweight > 1.05
-         * print you should train more
-         *
-         * if bodyweight < 1.05
-         * print you are prob new to the gym
-         *
-         * if bodyweight > 1.2
-         * print you are really experienced in the gym
-         */
-    </script>
+        return false;
+    }
+</script>
 {% endblock %}

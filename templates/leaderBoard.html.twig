@@ -3,41 +3,47 @@
 {% block title %}Scale Calculator {% endblock %}
 
 {% block body %}
-    <div class="page">
-        <div class="container">
-            <div class="card">
-                <div class="container-xl">
-                    <div class="card-header justify-content-center">
-                        <h1>Scale Api </h1>
-                    </div>
-                    <div class="card-body text-center">
-                        <h1>Scale Api output</h1>
-                    </div>
-                </div>
-            </div>
-        <br>
-        <div class="card">
-            <div class="container container-tight py-4">
-                <div class="card">
-                    <div class="text-center mb-4">
-                        <div class="card card-md">
-                            <div class="card-body">
-                                <h1>Scale Api Data</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <br>
     <div class="container">
         <div class="card">
-            <div class="container-xl">
-                <div class="card-header justify-content-center">
-                    <h1>Calculator Description</h1>
+            <div class="card-header g-2 d-flex justify-content-between">
+                <div>
+                    <div class="page-title">
+                        Leaderboards
+                    </div>
+                    <h2 class="page-pretitle">
+                        Keep track of personal records!
+                    </h2>
                 </div>
-                <div class="card-body text-center">
-                    {# information #}
+                <div class="d-flex justify-content-end">
+                    <div class="btn btn-primary">
+                        <a href="{{ path('app_index') }}" class="text-decoration-none">
+                            <span class="me-2 text-white">Get on the leaderboards!</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-table">
+                <div style="overflow-x:auto">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>1RM deadLift</th>
+                            <th>1RM benchPress</th>
+                            <th>bodyWeight</th>
+                            <th>Rank</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Admin</td>
+                            <td>110</td>
+                            <td>62.5</td>
+                            <td>65</td>
+                            <td>Real gym rat🐀 </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
